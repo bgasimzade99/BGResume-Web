@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BGResume - LinkedIn Mockups</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .mockup-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .mockup-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mockup-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+        }
+
+        .mockup-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #3B82F6, #10B981, #F59E0B, #EC4899);
+        }
+
+        .mockup-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #1F2937;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .mockup-content {
+            color: #6B7280;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .phone-mockup {
+            background: #1F2937;
+            border-radius: 25px;
+            padding: 20px;
+            margin: 20px 0;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .phone-screen {
+            background: linear-gradient(135deg, #1E293B, #334155);
+            border-radius: 15px;
+            padding: 20px;
+            min-height: 400px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .app-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .app-logo {
+            width: 60px;
+            height: 60px;
+            background: #3B82F6;
+            border-radius: 12px;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+
+        .app-name {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .app-tagline {
+            color: #BFDBFE;
+            font-size: 14px;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .feature-list li {
+            color: #E5E7EB;
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .feature-list li::before {
+            content: '✨';
+            position: absolute;
+            left: 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .stat-number {
+            color: #3B82F6;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: #BFDBFE;
+            font-size: 12px;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #3B82F6, #1D4ED8);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            display: inline-block;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+        }
+
+        .badge {
+            display: inline-block;
+            background: #10B981;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            margin: 5px;
+        }
+
+        .tech-stack {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 15px 0;
+        }
+
+        .tech-tag {
+            background: #F3F4F6;
+            color: #374151;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .quote {
+            background: #FEF3C7;
+            border-left: 4px solid #F59E0B;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .quote-text {
+            color: #92400E;
+            font-style: italic;
+            font-weight: 500;
+        }
+
+        .download-section {
+            text-align: center;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .download-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .download-btn {
+            background: #000;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.2s ease;
+        }
+
+        .download-btn:hover {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .mockup-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .download-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 BGResume</h1>
+            <p>AI-Powered Professional CV Generator - LinkedIn Mockups</p>
+        </div>
+
+        <div class="mockup-grid">
+            <!-- Mockup 1: App Showcase -->
+            <div class="mockup-card">
+                <div class="mockup-title">📱 App Showcase</div>
+                <div class="mockup-content">
+                    <div class="phone-mockup">
+                        <div class="phone-screen">
+                            <div class="app-header">
+                                <div class="app-logo">📄</div>
+                                <div class="app-name">BGResume</div>
+                                <div class="app-tagline">Professional CV & Proposal Generator</div>
+                            </div>
+                            
+                            <div class="stats-grid">
+                                <div class="stat-card">
+                                    <div class="stat-number">4.2⭐</div>
+                                    <div class="stat-label">App Rating</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-number">10K+</div>
+                                    <div class="stat-label">Downloads</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-number">95%</div>
+                                    <div class="stat-label">ATS Success</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-number">24/7</div>
+                                    <div class="stat-label">AI Support</div>
+                                </div>
+                            </div>
+                            
+                            <ul class="feature-list">
+                                <li>AI-Powered CV Generation</li>
+                                <li>ATS Optimization</li>
+                                <li>Voice Input Support</li>
+                                <li>QR Code CV Sharing</li>
+                                <li>Market Intelligence</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mockup 2: Features Highlight -->
+            <div class="mockup-card">
+                <div class="mockup-title">⚡ Key Features</div>
+                <div class="mockup-content">
+                    <div class="tech-stack">
+                        <span class="tech-tag">🤖 GPT-4 AI</span>
+                        <span class="tech-tag">📊 ATS Optimized</span>
+                        <span class="tech-tag">🎤 Voice Input</span>
+                        <span class="tech-tag">📱 QR Code</span>
+                        <span class="tech-tag">📈 Analytics</span>
+                        <span class="tech-tag">🔒 GDPR Safe</span>
+                    </div>
+                    
+                    <div class="quote">
+                        <div class="quote-text">
+                            "BGResume transformed my job search! The AI-generated CV helped me land interviews at top tech companies. The ATS optimization is a game-changer!" 
+                        </div>
+                    </div>
+                    
+                    <div style="margin: 20px 0;">
+                        <div class="badge">🚀 10x Faster</div>
+                        <div class="badge">🎯 95% ATS Success</div>
+                        <div class="badge">💼 Professional Quality</div>
+                        <div class="badge">🔒 Privacy First</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mockup 3: Technical Stack -->
+            <div class="mockup-card">
+                <div class="mockup-title">🛠️ Technical Excellence</div>
+                <div class="mockup-content">
+                    <h3 style="color: #1F2937; margin-bottom: 15px;">Built with Modern Tech Stack:</h3>
+                    
+                    <div class="tech-stack">
+                        <span class="tech-tag">React Native</span>
+                        <span class="tech-tag">Expo</span>
+                        <span class="tech-tag">OpenAI GPT-4</span>
+                        <span class="tech-tag">Tailwind CSS</span>
+                        <span class="tech-tag">Linear Gradients</span>
+                        <span class="tech-tag">Ionicons</span>
+                    </div>
+                    
+                    <div style="margin: 20px 0; padding: 15px; background: #F3F4F6; border-radius: 10px;">
+                        <h4 style="color: #1F2937; margin-bottom: 10px;">Performance Metrics:</h4>
+                        <ul style="color: #6B7280; list-style: none;">
+                            <li>⚡ < 2s Load Time</li>
+                            <li>📱 99.9% Uptime</li>
+                            <li>🔒 SOC 2 Certified</li>
+                            <li>🌍 Global CDN</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mockup 4: User Experience -->
+            <div class="mockup-card">
+                <div class="mockup-title">🎨 User Experience</div>
+                <div class="mockup-content">
+                    <div class="phone-mockup">
+                        <div class="phone-screen">
+                            <div style="text-align: center; color: white;">
+                                <div style="font-size: 18px; margin-bottom: 20px;">✨ Splash Screen</div>
+                                <div style="width: 80px; height: 80px; background: #3B82F6; border-radius: 20px; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 32px;">
+                                    📄
+                                </div>
+                                <div style="font-size: 24px; font-weight: bold; margin-bottom: 10px;">BGResume</div>
+                                <div style="color: #BFDBFE; margin-bottom: 30px;">Professional CV Generator</div>
+                                
+                                <div style="width: 100%; height: 4px; background: rgba(255,255,255,0.2); border-radius: 2px; overflow: hidden; margin-bottom: 10px;">
+                                    <div style="width: 75%; height: 100%; background: #3B82F6; border-radius: 2px;"></div>
+                                </div>
+                                <div style="font-size: 12px; color: #94A3B8;">Loading... 75%</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 20px;">
+                        <h4 style="color: #1F2937; margin-bottom: 10px;">UX Highlights:</h4>
+                        <ul style="color: #6B7280;">
+                            <li>🎨 Modern Gradient Design</li>
+                            <li>📱 Responsive Mobile-First</li>
+                            <li>⚡ Smooth Animations</li>
+                            <li>🎯 Intuitive Navigation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mockup 5: Market Position -->
+            <div class="mockup-card">
+                <div class="mockup-title">📈 Market Position</div>
+                <div class="mockup-content">
+                    <div style="background: linear-gradient(135deg, #3B82F6, #1D4ED8); color: white; padding: 20px; border-radius: 15px; margin-bottom: 20px;">
+                        <h3 style="margin-bottom: 15px;">🎯 Target Market</h3>
+                        <ul style="list-style: none;">
+                            <li>💼 Job Seekers</li>
+                            <li>🚀 Freelancers</li>
+                            <li>👔 Career Changers</li>
+                            <li>🎓 Recent Graduates</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: #FEF3C7; padding: 15px; border-radius: 10px; margin-bottom: 20px;">
+                        <h4 style="color: #92400E; margin-bottom: 10px;">💰 Revenue Model:</h4>
+                        <ul style="color: #92400E;">
+                            <li>Freemium Model</li>
+                            <li>Premium Features</li>
+                            <li>Enterprise Solutions</li>
+                            <li>API Access</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mockup 6: Call to Action -->
+            <div class="mockup-card">
+                <div class="mockup-title">🚀 Ready to Launch?</div>
+                <div class="mockup-content">
+                    <div style="text-align: center; margin-bottom: 30px;">
+                        <h3 style="color: #1F2937; margin-bottom: 15px;">Join the Future of CV Creation</h3>
+                        <p style="color: #6B7280; margin-bottom: 20px;">
+                            Experience the power of AI-driven professional CV generation. 
+                            Stand out in the competitive job market with BGResume.
+                        </p>
+                    </div>
+                    
+                    <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                        <a href="#" class="cta-button">📱 Download Now</a>
+                        <a href="#" class="cta-button" style="background: linear-gradient(135deg, #10B981, #059669);">🎯 Try Demo</a>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 20px;">
+                        <div class="badge">🔒 GDPR Compliant</div>
+                        <div class="badge">⚡ Lightning Fast</div>
+                        <div class="badge">🤖 AI Powered</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="download-section">
+            <h2 style="color: #1F2937; margin-bottom: 20px;">📱 Download BGResume</h2>
+            <p style="color: #6B7280; margin-bottom: 30px;">
+                Available on all major platforms. Start creating professional CVs in minutes!
+            </p>
+            
+            <div class="download-buttons">
+                <a href="#" class="download-btn">📱 App Store</a>
+                <a href="#" class="download-btn">🤖 Google Play</a>
+                <a href="#" class="download-btn">💻 Web App</a>
+                <a href="#" class="download-btn">📧 Contact Us</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
